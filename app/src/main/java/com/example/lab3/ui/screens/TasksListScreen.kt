@@ -10,9 +10,11 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.lab3.data.*
@@ -52,8 +54,11 @@ fun TasksListScreen(
 
 @Composable
 fun TaskListItem(task: TaskItem, onClick: () -> Unit) {
+    val textDecoration = if (task.isCompleted) TextDecoration.LineThrough else TextDecoration.None
+    val cardAlpha = if (task.isCompleted) 0.6f else 1f
+
     Card(
-        modifier = Modifier.fillMaxWidth().clickable(onClick = onClick),
+        modifier = Modifier.fillMaxWidth().clickable(onClick = onClick).alpha(cardAlpha),
         shape = RoundedCornerShape(8.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
         colors = CardDefaults.cardColors(containerColor = Color.White)
@@ -73,7 +78,8 @@ fun TaskListItem(task: TaskItem, onClick: () -> Unit) {
                 Text(
                     text = task.title,
                     fontWeight = FontWeight.Bold,
-                    fontSize = 16.sp
+                    fontSize = 16.sp,
+                    textDecoration = textDecoration
                 )
                 if (task.dueDate.isNotEmpty()) {
                     Text(
