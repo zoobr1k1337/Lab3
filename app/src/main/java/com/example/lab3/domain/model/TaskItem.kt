@@ -1,4 +1,4 @@
-package com.example.lab3.data
+package com.example.lab3.domain.model
 
 import androidx.compose.ui.graphics.Color
 

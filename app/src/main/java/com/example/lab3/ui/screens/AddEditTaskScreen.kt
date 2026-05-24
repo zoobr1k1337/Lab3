@@ -6,8 +6,8 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.example.lab3.data.TaskPriority
-import com.example.lab3.data.toDisplayName
+import com.example.lab3.domain.model.TaskPriority
+import com.example.lab3.domain.model.toDisplayName
 import com.example.lab3.ui.viewmodel.AddEditTaskUiState
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -64,7 +64,10 @@ fun AddEditTaskScreen(
                     value = uiState.priority.toDisplayName(),
                     onValueChange = {},
                     readOnly = true,
-                    modifier = Modifier.fillMaxWidth().menuAnchor(),
+                    modifier = Modifier.fillMaxWidth().menuAnchor(
+                        type = ExposedDropdownMenuAnchorType.PrimaryNotEditable,
+                        enabled = true
+                    ),
                     trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) }
                 )
                 ExposedDropdownMenu(

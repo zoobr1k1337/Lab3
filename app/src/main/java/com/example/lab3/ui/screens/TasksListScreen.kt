@@ -17,7 +17,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.lab3.data.*
+import com.example.lab3.domain.model.TaskItem
+import com.example.lab3.domain.model.getIndicatorColor
+import com.example.lab3.domain.model.getBadgeBackgroundColor
+import com.example.lab3.domain.model.getBadgeTextColor
+import com.example.lab3.domain.model.toDisplayName
 import com.example.lab3.ui.viewmodel.TasksListUiState
 
 @OptIn(ExperimentalMaterial3Api::class)
